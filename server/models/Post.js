@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const replySchema = require('./Reply')
 
 const postSchema = new Schema(
     {

@@ -27,10 +27,14 @@ const typeDefs = gql`
         postCount: Int
     }
     type Query {
-        me: User
-        user(username: String!): User # search by username, returns user 
-        users: [User] # returns array of users
-        post(_id: ID!): # data must exist to query
-        posts(username: String): [Post] # can query by username, returning array of posts
+        helloWorld: String
+        # me: User
+        # user(username: String!): User # search by username, returns user 
+        # users: [User] # returns array of users
+        # post(_id: ID!): # data must exist to query
+        # posts(username: String): [Post] # can query by username, returning array of posts
+
     }
 `;
+
+module.exports = typeDefs;
