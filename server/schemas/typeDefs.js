@@ -10,7 +10,7 @@ const typeDefs = gql`
         postText: String
         createdAt: String
         username: String
-        posts: [Post] # array of posts, bases on Post typedef
+        replies: [Reply] # array of posts, bases on Post typedef
         replyCount: Int
     }
     type Reply {
@@ -24,15 +24,14 @@ const typeDefs = gql`
         username: String
         email: String
         posts: [Post] # array of posts, based on Post typedef
-        postCount: Int
     }
     type Query {
         helloWorld: String
         # me: User
-        # user(username: String!): User # search by username, returns user 
-        # users: [User] # returns array of users
-        # post(_id: ID!): # data must exist to query
-        # posts(username: String): [Post] # can query by username, returning array of posts
+        user(username: String!): User # search by username, returns user 
+        users: [User] # returns array of users
+        post(_id: ID!): Post # data must exist to query
+        posts(username: String): [Post] # can query by username, returning array of posts
 
     }
 `;

@@ -21,6 +21,10 @@ const postSchema = new Schema(
     }
 );
 
+postSchema.virtual('replyCount').get(function() {
+    return this.replies.length;
+})
+
 const Post = model('Post', postSchema);
 
 module.exports = Post;
