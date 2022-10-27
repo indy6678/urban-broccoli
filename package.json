@@ -1,0 +1,22 @@
+{
+  "name": "urban-broccoli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indy6678/urban-broccoli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indy6678/urban-broccoli/issues"
+  },
+  "homepage": "https://github.com/indy6678/urban-broccoli#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0"
+  }
+}
