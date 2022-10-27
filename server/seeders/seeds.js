@@ -21,19 +21,19 @@ db.once('open', async () => {
         // add username, email, and password to userData array
         userData.push({ username, email, password })
     }
-
-    const createdUsers = await User.collection.insertMany(userData)
+    const createdUsers = await User.insertMany(userData);
+    // console.log('createdUsers', createdUsers);
 
     // create posts
     let createdPosts = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
         // create post of random words with length between 5-15
-        const postText = faker.lorem.words(Math.floor(Math.random() * 10) + 5)
+        const postText = faker.lorem.words(Math.floor(Math.random() * 20) + 2)
 
         // returns the index of a user randomly
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length)
+        const randomUserIndex = Math.floor(Math.random() * createdUsers.length)
         // destructure username and _id from user at index of randomUserIndex
-        const { username, _id: userid } = createdUsers.ops[randomUserIndex]
+        const { username, _id: userId } = createdUsers[randomUserIndex]
         // create a post with created text and username
         const createdPost = await Post.create({ postText, username })
         // update a user
@@ -49,9 +49,9 @@ db.once('open', async () => {
         // create reply of random words with length between 5-15
         const replyBody = faker.lorem.words(Math.floor(Math.random() * 10) + 5)
         // returns the index of a user randomly
-        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length)
+        const randomUserIndex = Math.floor(Math.random() * createdUsers.length)
         // destructure username and _id from selected user
-        const { username, _id: userid } = createdUsers.ops[randomUserIndex]
+        const { username} = createdUsers[randomUserIndex]
         // return random number between 0 and length of createdPosts array and saves in randomPostIndex
         const randomPostIndex = Math.floor(Math.random() * createdPosts.length)
         // destructure _id from post found at randomPostIndex value in createdPosts array
@@ -62,10 +62,9 @@ db.once('open', async () => {
             { _id: thoughtId },
             { $push: { replies: { replyBody, username } } },
             { runValidators: true }
-        )
-
+        );
     }
-
+    console.log('createdUsers', createdUsers);
     console.log('Seeding complete!')
     process.exit(0)
 })
