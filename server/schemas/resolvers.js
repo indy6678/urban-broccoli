@@ -1,27 +1,27 @@
-const {AuthenticationError} = require('apollo-server-express');
-const {User, Post} = require('../models');
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Post } = require('../models');
 
 const resolvers = {
     Query: {
         // get all users
         users: async () => {
             return User.find()
-            // .select('-__v -password')
-            .populate('posts');
+                // .select('-__v -password')
+                .populate('posts');
         },
         // get a single user by username
-        user: async (parent, {username}) => {
-            return User.findOne({username})
-            .select('-__v -password')
-            .populate('posts')
-            
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+                .select('-__v -password')
+                .populate('posts')
+
         },
-        posts: async (parent, {username}) => {
-            const params = username ? {username} : {};
+        posts: async (parent, { username }) => {
+            const params = username ? { username } : {};
             return Post.find(params)
         },
-        post: async (parent, {_id}) => {
-            return Post.findOne({_id});
+        post: async (parent, { _id }) => {
+            return Post.findOne({ _id });
         }
     },
     Mutation: {
@@ -29,8 +29,20 @@ const resolvers = {
             const user = await User.create(args)
             return user;
         },
-        login: async () => {
-            
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError('Incorrect username or password. Try again');
+            }
+
+            const correctPw = await user.isCorrectPassword(password);
+
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect username or password. Try again');
+            }
+
+            return user;
         }
     }
 }
