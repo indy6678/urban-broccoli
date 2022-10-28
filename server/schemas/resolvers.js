@@ -35,7 +35,7 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('Incorrect username or password. Try again');
             }
-
+            // test to verify password is correct using Bcrypt
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
