@@ -33,13 +33,13 @@ const resolvers = {
             const user = await User.findOne({ email });
 
             if (!user) {
-                throw new AuthenticationError('Incorrect username or password. Try again');
+                throw new AuthenticationError('Incorrect username and/or password. Try again');
             }
             // test to verify password is correct using Bcrypt
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect username or password. Try again');
+                throw new AuthenticationError('Incorrect username and/or password. Try again');
             }
 
             return user;
