@@ -34,6 +34,10 @@ const typeDefs = gql`
         posts(username: String): [Post] # can query by username, returning array of posts
 
     }
+    type Mutation {
+        login(email: String!, password: String!): User
+        addUser(username: String!, email: String!, password: String!): User
+    }
 `;
 
 module.exports = typeDefs;
