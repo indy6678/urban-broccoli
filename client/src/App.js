@@ -2,8 +2,9 @@ import './App.css';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
-
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+// import from react-router-dom, renaming browserrouter as router
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
