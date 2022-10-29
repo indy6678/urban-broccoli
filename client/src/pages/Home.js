@@ -16,9 +16,11 @@ const Home = () => {
         <main>
             <div>
                 <div className='flex-row justify-space-between'>
-                    {/* <div>Just something random</div> */}
                     <div className='col-12 mb-3'>
-                        <PostList posts={posts} title="Have you seen my pet? "/>
+                        {loading ? (
+                            <div>Loading...</div>
+                        ) : (<PostList posts={posts} title="Have you seen my pet?" />
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,10 +1,12 @@
 import './App.css';
 import Home from './pages/Home';
 import Header from './components/Header';
+import Footer from './components/Footer';
+
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3001/graphql',
+  uri: '/graphql',
 });
 const client = new ApolloClient({
   link: httpLink,
@@ -21,6 +23,7 @@ function App() {
         <div>
           <Home />
         </div>
+        <Footer/>
       </div>
     </ApolloProvider>
   )

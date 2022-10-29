@@ -19,7 +19,7 @@
     "url": "https://github.com/indy6678/urban-broccoli/issues"
   },
   "homepage": "https://github.com/indy6678/urban-broccoli#readme",
-  "dependencies": {
+  "devDependencies": {
     "concurrently": "^7.5.0"
   }
 }
