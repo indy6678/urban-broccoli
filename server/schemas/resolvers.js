@@ -8,7 +8,8 @@ const resolvers = {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
-                    .populate('posts');
+                    .populate('posts')
+                    .populate('replies');
 
                 return userData;
             }
@@ -69,6 +70,31 @@ const resolvers = {
                 return post;
             }
             throw new AuthenticationError('You need to be logged in to add a post!');
+        },
+        addReply: async (parent, { postId, replyBody}, context) => {
+            // check that user is logged in
+            if(context.user) {
+                const updatedPost = await Post.findOneAndUpdate(
+                    {_id: postId},
+                    {$push: {replies: {replyBody, username: context.user.username}}},
+                    {new: true, runValidators: true}
+                );
+                return updatedPost;
+            }
+            throw new AuthenticationError('You need to be logged in to add a reply!');
+        },
+        addNeighbor: async(parent, {neighborId}, context) => {
+            // check to see if user is logged in
+            if(context.user) {
+                const updatedUser = await User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    {$addToSet: {neighbors: neighborId}}, // using addToSet to prevent duplicates
+                    {new: true}
+                ).populate('neighbors');
+
+                return updatedUser;
+            }
+            throw new AuthenticationError('You need to be logged in to add a neighbor!')
         }
     }
 }

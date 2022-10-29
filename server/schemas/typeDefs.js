@@ -10,6 +10,7 @@ const typeDefs = gql`
         postText: String
         createdAt: String
         username: String
+        neighborhood: String
         replies: [Reply] # array of posts, bases on Post typedef
         replyCount: Int
     }
@@ -24,6 +25,7 @@ const typeDefs = gql`
         username: String
         email: String
         posts: [Post] # array of posts, based on Post typedef
+        neighbors: [User]
     }
     type Query {
         me: User
@@ -37,6 +39,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addPost(postText: String!): Post
         addReply(postId: ID!, replyBody: String!): Post
+        addNeighbor(neighborId: ID!): User
     }
     type Auth {
         token: ID!
