@@ -26,13 +26,11 @@ const typeDefs = gql`
         posts: [Post] # array of posts, based on Post typedef
     }
     type Query {
-        helloWorld: String
-        # me: User
+        me: User
         user(username: String!): User # search by username, returns user 
         users: [User] # returns array of users
         post(_id: ID!): Post # data must exist to query
         posts(username: String): [Post] # can query by username, returning array of posts
-
     }
     type Mutation {
         login(email: String!, password: String!): Auth
