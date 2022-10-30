@@ -33,6 +33,10 @@ function App() {
             path='/post'
             element={<SinglePost />}
             />
+            <Route
+            path='*'
+            element={<NotHere />}
+            />
             </Routes>
         </div>
         <Footer/>
