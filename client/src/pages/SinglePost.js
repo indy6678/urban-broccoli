@@ -1,22 +1,36 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import {useQuery} from '@apollo/client';
+import { QUERY_POST } from "../utils/queries";
+import ReplyList from "../components/ReplyList";
 
 const SinglePost = () => {
   const { id: postId } = useParams();
-  console.log(postId);
+  const {loading, data} = useQuery(QUERY_POST,{
+    variables: { id: postId}
+  });
+  // optional chaining; if data exists, store it in the post constant, otherwise save empty object {} to post
+  const post = data?.post || {};
+
+  // console.log(postId);
+if (loading){
+  return <div>Loading...</div>
+}
   return (
     <div>
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontweight: 700 }} className="text-light">
-            Username
+            Posted by {post.username}
           </span>{" "}
-          post at createdAt
+          at {post.createdAt}
         </p>
         <div className="card-body">
-          <p>Pet Posts</p>
+          <p>{post.postText}</p>
         </div>
       </div>
+      {/* pass reply array as prop and renders only if the reply array is */}
+      {post.replyCount > 0 && <ReplyList replies={post.replies}/>}
     </div>
   );
 };

@@ -10,7 +10,7 @@ const PostList = ({ posts, title }) => {
           posts.map((post) => (
             <div key={post._id} className="card mb-3">
               <p className="card-header">
-                Post by {' '}
+                Posted by {' '}
                 <Link
                   to={`/profile/${post.username}`}
                   style={{ fontWeight: 700}}
