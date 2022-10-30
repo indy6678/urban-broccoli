@@ -1,8 +1,8 @@
 :root {
   --primary: #497573;
-  --secondary: #99f7f2;
+  --secondary: #94734d50;
   --tertiary: #b2c2c1;
-  --quatrinary: #cadbda;
+  --quaternary: #cadbda;
   --light: #e1f5f4;
   --dark: #6c7575;
   --error: rgb(228, 46, 1);
@@ -759,8 +759,8 @@ nav a:hover {
   color: var(--tertiary);
 }
 
-.text-quatrinary {
-  color: var(--quatrinary);
+.text-quaternary {
+  color: var(--quaternary);
 }
 
 .text-light {
@@ -797,6 +797,10 @@ nav a:hover {
 }
 
 /* FLEX CONTENT */
+.flex {
+  display: flex
+}
+
 .flex-row {
   display: flex;
   flex-wrap: wrap;
