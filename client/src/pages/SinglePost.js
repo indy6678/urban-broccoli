@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const SinglePost = () => {
+  const { id: postId } = useParams();
+  console.log(postId);
   return (
     <div>
       <div className="card mb-3">
