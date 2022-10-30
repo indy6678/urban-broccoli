@@ -2,8 +2,11 @@ import './App.css';
 import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SinglePost from './pages/SinglePost'
+import SinglePost from './pages/SinglePost';
+import SignIn from './pages/SignIn';
 import NotHere from './pages/NotHere';
+import Profile from './pages/Profile';
+import AddUser from './pages/AddUser';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 // import from react-router-dom, renaming browserrouter as router
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -37,6 +40,14 @@ function App() {
             <Route
             path='*'
             element={<NotHere />}
+            />
+            <Route
+            path='/signin'
+            element={<SignIn/>}
+            />
+            <Route
+            path='/adduser'
+            element={<AddUser/>}
             />
             </Routes>
         </div>
