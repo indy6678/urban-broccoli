@@ -1,7 +1,33 @@
 import React, { useState } from "react";
+import {useMutation} from '@apollo/client';
+import { ADD_POST } from "../../utils/mutations";
+import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
 
 const PostForm = () => {
   const [postText, setText] = useState("");
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, {data: {addPost}}) {
+      try {
+        const {me} = cache.readQuery({ query: QUERY_ME});
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: {me: { ...me, posts: [...me.posts, addPost]}},
+        });
+      } catch (e) {
+        console.warn("First post insertion by user!")
+      }
+
+
+      // read what is currently in cache
+      const {posts} = cache.readQuery({ query: QUERY_POSTS});
+
+      // prepend the newest post to the front of the array
+      cache.writeQuery({
+        query: QUERY_POSTS,
+        data: {posts: [addPost, ...posts]}
+      });
+    }
+  });
 
   const handleChange = (event) => {
     if (event.target.value.length <= 255) {
@@ -11,7 +37,17 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    setText("");
+    try {
+      // add the post to the db
+      await addPost({
+          variables: {postText}
+      });
+
+      // clear the form value
+      setText("");
+  } catch (e) {
+      console.error(e);
+  }
   };
 
   return (
@@ -31,6 +67,8 @@ const PostForm = () => {
           Submit
         </button>
       </form>
+      <p className={`m-2 ${error ? 'text-error' : ''}`}>{error && <span className="ml-2 error">Oops. Nothing was entered!</span>}
+      </p>
     </div>
   );
 };
