@@ -7,6 +7,7 @@ import NeighborList from "../components/NeighborList";
 import Auth from "../utils/auth";
 import { ADD_NEIGHBOR } from "../utils/mutations";
 import PostForm from "../components/PostForm";
+import ReplyForm from "../components/ReplyForm";
 
 const Profile = () => {
   // destructure mutation function to be used in click function

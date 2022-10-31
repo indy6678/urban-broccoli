@@ -9,7 +9,7 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('posts')
-                    .populate('replies');
+                    .populate('meighbors');
 
                 return userData;
             }
@@ -18,19 +18,21 @@ const resolvers = {
         // get all users
         users: async () => {
             return User.find()
-                // .select('-__v -password')
-                .populate('posts');
+                .select('-__v -password')
+                .populate('posts')
+                .populate('neighbors');
         },
         // get a single user by username
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
                 .populate('posts')
+                .populate('neighbors');
 
         },
         posts: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Post.find(params)
+            return Post.find(params).sort({ createdAt: -1});
         },
         post: async (parent, { _id }) => {
             return Post.findOne({ _id });
@@ -94,7 +96,7 @@ const resolvers = {
 
                 return updatedUser;
             }
-            throw new AuthenticationError('You need to be logged in to add a neighbor!')
+            throw new AuthenticationError('Please log in to add a neighbor!')
         }
     }
 }

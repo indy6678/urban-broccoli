@@ -38,3 +38,29 @@ export const ADD_NEIGHBOR = gql`
   }
 `;
 
+export const ADD_POST = gql`
+mutation addPost($postText: String!) {
+  addPost(postText: $postText) {
+    _id
+    postText
+    createdAt
+    username
+    replyCount
+    replies {
+      _id
+    }
+  }
+}
+`;
+
+export const ADD_REPLY = gql`
+mutation addReply($postId: ID!, replyText: $replyText) {
+  _id
+  replyCount
+  replies {
+    _id
+    replyText
+    createdAt
+    username
+  }
+}`
