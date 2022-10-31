@@ -36,7 +36,7 @@ const SignIn = () => {
         <main className="flex-row justify-center mb-4">
             <div className="col-12 col-md-6">
                 <div className="card">
-                    <h4 className="">Log in here if you have an account. Click 'Sign Up' to create one if you don't!</h4>
+                    <h4 className="text-center">Log in to your account here.</h4>
                     <div className="card-body">
                         <form onSubmit={handleFormSubmit}>
                             <input className="form-input"

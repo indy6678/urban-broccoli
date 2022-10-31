@@ -23,3 +23,18 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_NEIGHBOR = gql`
+  mutation addNeighbor($id: ID!) {
+    addNeighbor(neighborId: $id) {
+      _id
+      username
+      neighborCount
+      neighbors {
+        _id
+        username
+      }
+    }
+  }
+`;
+

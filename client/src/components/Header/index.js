@@ -3,18 +3,25 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
 const Header = () => {
+
+  const logout = (event) => {
+    event.preventDefault();
+    // remove token from localStorage
+    Auth.logout();
+  };
+
   return (
     <header className="mb-4 py-2 flex-row align-center">
       <div className="container flex-row justify-center align-center">
         <Link to="/">
-          <h1 className="col-9">Find My Pet</h1>
+          <h1 className="col-6">Find My Pet</h1>
         </Link>
 
         <nav className="col-4 text-center">
           {Auth.loggedIn() ? (
             <>
               <Link to="/profile">My profile</Link>
-              <a href="/">Log out</a>
+              <a href="/" onClick={logout}>Log out</a>
             </>
           ) : (
             <>

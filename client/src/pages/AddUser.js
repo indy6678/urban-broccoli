@@ -34,7 +34,7 @@ const AddUser = () => {
         <main className="flex-row justify-center mb-4">
             <div className="col-12 col-md-6">
                 <div className="card">
-                    <h4 className="card-header">Sign Up Here</h4>
+                    <h4 className="text-center">Sign Up Here</h4>
                     <div className="card-body">
                         <form onSubmit={handleFormSubmit}>
                             <input className="form-input"
@@ -54,7 +54,7 @@ const AddUser = () => {
                             onChange={handleChange}
                             />
                             <input className="form-input"
-                            placeholder='**************'
+                            placeholder="Enter a password"
                             name='password'
                             type='password'
                             id='password'

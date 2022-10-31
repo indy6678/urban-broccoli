@@ -17,7 +17,7 @@ if (loading){
   return <div>Loading...</div>
 }
   return (
-    <div>
+    <div className='flex-column align-center'>
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontweight: 700 }} className="text-light">
@@ -29,8 +29,10 @@ if (loading){
           <p>{post.postText}</p>
         </div>
       </div>
+      <div className="w-50">
       {/* pass reply array as prop and renders only if the reply array is */}
       {post.replyCount > 0 && <ReplyList replies={post.replies}/>}
+      </div>
     </div>
   );
 };
