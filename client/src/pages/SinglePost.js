@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import {useQuery} from '@apollo/client';
 import { QUERY_POST } from "../utils/queries";
 import ReplyList from "../components/ReplyList";
+import ReplyForm from "../components/ReplyForm";
+import Auth from '../utils/auth';
 
 const SinglePost = () => {
   const { id: postId } = useParams();
@@ -33,6 +35,7 @@ if (loading){
       {/* pass reply array as prop and renders only if the reply array is */}
       {post.replyCount > 0 && <ReplyList replies={post.replies}/>}
       </div>
+      {Auth.loggedIn() && <ReplyForm postId={post._id} />}
     </div>
   );
 };
