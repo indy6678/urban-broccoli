@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/urban-broccoli', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/urban-broccoli', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // use the below with v5.9.9 or lower
