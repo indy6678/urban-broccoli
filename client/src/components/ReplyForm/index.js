@@ -25,7 +25,7 @@ const ReplyForm = ({ postId }) => {
       >
         <textarea
           placeholder="Leave a reply..."
-        //   value={replybody}
+        //   value={replyBody}
           className="form-input col-12 col-md-9"
         ></textarea>
         <button className="btn col-12 col-md-3" type="submit">
