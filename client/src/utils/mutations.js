@@ -52,15 +52,3 @@ mutation addPost($postText: String!) {
   }
 }
 `;
-
-export const ADD_REPLY = gql`
-mutation addReply($postId: ID!, replyText: $replyText) {
-  _id
-  replyCount
-  replies {
-    _id
-    replyText
-    createdAt
-    username
-  }
-}`

@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Navigate } from "react-router-dom";
-// import PostList from "../components/PostList";
+import PostList from "../components/PostList";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import NeighborList from "../components/NeighborList";
