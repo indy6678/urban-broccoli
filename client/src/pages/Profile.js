@@ -6,6 +6,7 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import NeighborList from "../components/NeighborList";
 import Auth from "../utils/auth";
 import { ADD_NEIGHBOR } from "../utils/mutations";
+import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 
 const Profile = () => {
@@ -60,7 +61,7 @@ console.log(data)
 
       <div>
         <div>
-          {/* <PostList posts={user.posts} /> */}
+          {/* <PostList posts={user.posts} title={`${user.username}'s posts`}/> */}
         </div>
         <div>
           <NeighborList
