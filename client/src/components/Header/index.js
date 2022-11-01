@@ -20,7 +20,7 @@ const Header = () => {
         <nav className="col-4 text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to={`/profile${Auth.getProfile().data.username}`}>My profile</Link>
+              <Link to={`/profile/${Auth.getProfile().data.username}`}>My profile</Link>
               <a href="/" onClick={logout}>Log out</a>
             </>
           ) : (

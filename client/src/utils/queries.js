@@ -57,7 +57,8 @@ query user($username: String!) {
             replyCount
         }
     }
-}`
+}
+`;
 
 export const QUERY_ME = gql`
   {

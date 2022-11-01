@@ -54,12 +54,12 @@ mutation addPost($postText: String!) {
 `;
 
 export const ADD_REPLY = gql`
-mutation addReply($postId: ID!, replyText: $replyText) {
+mutation addReply($postId: ID!, $replyBody: replyBody) {
   _id
   replyCount
   replies {
     _id
-    replyText
+    replyBody
     createdAt
     username
   }

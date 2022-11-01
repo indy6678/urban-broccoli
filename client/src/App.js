@@ -48,7 +48,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/profile/:username" element={<Profile />}/>
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/" element={<Profile />} />
               <Route path="/post/:id" element={<SinglePost />} />
               <Route path="/" element={<Home />} />
               <Route path="*" element={<NotHere />} />
