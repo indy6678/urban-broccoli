@@ -45,8 +45,8 @@ query user($username: String!) {
         _id
         username
         email
-        friendCount
-        friends{
+        neighborCount
+        neighbors{
             _id
             username
         }
@@ -65,20 +65,20 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
-      thoughts {
+      neighborCount
+      posts {
         _id
-        thoughtText
+        postText
         createdAt
-        reactionCount
-        reactions {
+        replyCount
+        replies {
           _id
           createdAt
-          reactionBody
+          replyBody
           username
         }
       }
-      friends {
+      neighbors {
         _id
         username
       }

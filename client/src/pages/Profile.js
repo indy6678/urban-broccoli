@@ -14,7 +14,7 @@ const Profile = () => {
 
   const { username } = useParams();
 console.log(username);
-  const { loading, data, error } = useQuery(username ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
     variables: { username},
   });
 
