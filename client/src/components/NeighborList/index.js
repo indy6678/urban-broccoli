@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const NeighborList = ({ neighborCount, username, neighbors }) => {
   if (!neighbors || !neighbors.length) {
-    console.log(NeighborList)
     return <p className='text-center'>{username}, it doesn't look like you have any neighbors yet!</p>;
     
   }

@@ -12,17 +12,17 @@ const Profile = () => {
   // destructure mutation function to be used in click function
   const [addNeighbor] = useMutation(ADD_NEIGHBOR);
 
-  const { username: userParam } = useParams();
-
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
+  const { username } = useParams();
+console.log(username);
+  const { loading, data, error } = useQuery(username ? QUERY_USER : QUERY_ME, {
+    variables: { username},
   });
 
   // optional chaining; if data exists, then store in the user constant, otherwise save an empty object into user constant
   const user = data?.me || data?.user || {};
-
+console.log(data)
   // navigate to personal profile page if username is the logged-in user's
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
     return <Navigate to="/profile" />;
   }
 
@@ -49,9 +49,9 @@ const Profile = () => {
     <div className="flex-column align-center">
       <div>
         <h2 className="p-3 text-center">
-          Checking out {userParam ? `${user.username}'s` : "your own"} profile.
+          Checking out {user ? `${user.username}'s` : "your own"} profile.
         </h2>
-        {userParam && (
+        {username && (
           <button className="btn" onClick={handleClick}>
             Add a neighbor
           </button>
@@ -70,7 +70,7 @@ const Profile = () => {
           />
         </div>
       </div>
-      <div className="w-50  mb-3">{!userParam && <PostForm />}</div>
+      <div className="w-50  mb-3">{!username && <PostForm />}</div>
     </div>
   );
 };
