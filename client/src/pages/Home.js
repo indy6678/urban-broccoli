@@ -6,11 +6,14 @@ import { QUERY_POSTS, QUERY_ME_BASIC } from "../utils/queries";
 import PostList from "../components/PostList";
 import corgi from "../assets/images/corgi.jpg";
 import lab from "../assets/images/lab.jpg";
+import rho from "../assets/images/rr-portrait.jpg";
+import dog from "../assets/images/dog-photo.jpg";
 // import authservice to checked for logged in user
 import Auth from "../utils/auth";
 // import neighbor list
 import NeighborList from "../components/NeighborList";
 import PostForm from "../components/PostForm";
+
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
@@ -26,10 +29,12 @@ const Home = () => {
   return (
     <main>
       <div>
-        <div className="flex-column align-center">
+        <div className="flex-row justify-space-around align-center">
+        <img src={rho} width="25%" alt="Rhodesian Ridgeback" />
+        <img src={rho} width="25%" alt="Rhodesian Ridgeback" />
           <span className="flex-row justify-space-around">
-            <img src={corgi} width="30%" alt="corgi" />
-            <img src={lab} width="30%" alt="lab" />
+            <img src={corgi} width="30%" alt="Tri-color Corgi" />
+            <img src={lab} width="30%" alt="Golden Retriever facing left" />
           </span>
           <div className="w-50 text-center">
             {!loggedIn && (
