@@ -25,12 +25,12 @@ const resolvers = {
         },
         // get a single user by username
         user: async (parent, { username }) => {
-            console.log(username)
+            // console.log(username)
             const result =  User.findOne({ username })
                 .select('-__v -password')
                 .populate('posts')
                 .populate('neighbors');
-            console.log(result)
+            // console.log(result)
             return result
         },
         posts: async (parent, { username }) => {

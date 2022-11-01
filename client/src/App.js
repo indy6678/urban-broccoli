@@ -47,10 +47,8 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route path="/profile">
-                <Route path=":username" element={<Profile />} />
-                <Route path="" element={<Profile />} />
-              </Route>
+              <Route path="/profile/:username" element={<Profile />}/>
+              <Route path="/profile" element={<Profile />} />
               <Route path="/post/:id" element={<SinglePost />} />
               <Route path="/" element={<Home />} />
               <Route path="*" element={<NotHere />} />
