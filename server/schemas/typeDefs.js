@@ -10,7 +10,7 @@ const typeDefs = gql`
         postText: String
         createdAt: String
         username: String
-        neighborhood: String
+        # neighborhood: String
         replies: [Reply] # array of posts, bases on Post typedef
         replyCount: Int
     }
