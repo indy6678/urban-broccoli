@@ -5,7 +5,7 @@ const PostList = ({ posts, title }) => {
     if (posts.length) {
       return (
         <div>
-          <h3>{title}</h3>
+          <h3 className="neighpost">{title}</h3>
           {posts &&
             posts.map((post) => (
               <div key={post._id} className="card mb-3">

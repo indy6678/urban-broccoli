@@ -9,32 +9,36 @@ import { ADD_NEIGHBOR } from "../utils/mutations";
 import PostList from "../components/PostList";
 import PostForm from "../components/PostForm";
 
-const Profile = () => {
+const Profile = (props) => {
   // destructure mutation function to be used in click function
   const [addNeighbor] = useMutation(ADD_NEIGHBOR);
 
   const { username } = useParams();
-console.log(username);
+// console.log('username',username);
   const { loading, data } = useQuery(username ? QUERY_USER : QUERY_ME, {
-    variables: { username},
+    variables: { username: username},
   });
 
   // optional chaining; if data exists, then store in the user constant, otherwise save an empty object into user constant
   const user = data?.me || data?.user || {};
-console.log(data)
+console.log("user const",user)
   // navigate to personal profile page if username is the logged-in user's
   if (Auth.loggedIn() && Auth.getProfile().data.username === username) {
-    return <Navigate to="/profile" />;
+    return <Navigate to="/profile:username" />;
   }
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // if (!user?.username) {
-  //   return <h4 className="text-center">You haven't signed in yet!</h4>;
-  // }
-  // console.log({ data });
+  if (!user?.username) {
+    return (
+    <h4 className="text-center">
+    You haven't signed in yet!
+    </h4>
+    );
+  }
+  // console.log('data object',{ data });
 
   const handleClick = async () => {
     try {
@@ -54,14 +58,14 @@ console.log(data)
         </h2>
         {username && (
           <button className="btn" onClick={handleClick}>
-            Add a neighbor
+            Add as your neighbor
           </button>
         )}
       </div>
 
       <div>
         <div>
-          {/* <PostList posts={user.posts} title={`${user.username}'s posts`}/> */}
+          <PostList posts={user.posts} title={`${user.username}'s posts`}/>
         </div>
         <div>
           <NeighborList

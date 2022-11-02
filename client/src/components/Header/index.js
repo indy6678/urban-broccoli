@@ -12,12 +12,12 @@ const Header = () => {
 
   return (
     <header className="mb-4 py-2 flex-row align-center">
-      <div className="container flex-row justify-center align-center">
-        <Link to="/">
-          <h1 className="col-6">Find My Pet</h1>
+      <div className="container flex-row-lg align-center justify-center-lg">
+        <Link to="/" className="text-center">
+          <h1 className="col-6 col-sm-6">Find My Pet</h1>
         </Link>
 
-        <nav className="col-4 text-center">
+        <nav className="col-6 text-center">
           {Auth.loggedIn() ? (
             <>
               <Link to={`/profile/${Auth.getProfile().data.username}`}>My profile</Link>

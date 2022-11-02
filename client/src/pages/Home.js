@@ -14,7 +14,6 @@ import Auth from "../utils/auth";
 import NeighborList from "../components/NeighborList";
 import PostForm from "../components/PostForm";
 
-
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   // destructure 'data' from useQuery hook response and rename it 'userData'
@@ -29,25 +28,20 @@ const Home = () => {
   return (
     <main>
       <div>
+        
         <div className="flex-row justify-space-around align-center">
-        <img src={rho} width="25%" alt="Rhodesian Ridgeback" />
-        <img src={rho} width="25%" alt="Rhodesian Ridgeback" />
-          <span className="flex-row justify-space-around">
-            <img src={corgi} width="30%" alt="Tri-color Corgi" />
-            <img src={lab} width="30%" alt="Golden Retriever facing left" />
-          </span>
-          <div className="w-50 text-center">
+          <div className="col-11">
             {!loggedIn && (
               
-              <h2>Has your pet gotten loose? Check below to see more.
+              <h2>Has your pet gotten lost? Check below to see if someone has seen them!
               Or if you have seen one roaming around the
-            neighborhood, sign in or sign up to let us know!
+            neighborhood, sign up or sign in and let us know!
               </h2>
             )}
             {loggedIn && (
             <div>
               <h3>
-              Let us know or check below to see what your neighbors have said.
+              Let us know what you saw or check below to see what your neighbors have said.
               </h3>
               <PostForm />
             </div>
