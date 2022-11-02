@@ -4,10 +4,7 @@ import { useQuery } from "@apollo/client";
 // import query post
 import { QUERY_POSTS, QUERY_ME_BASIC } from "../utils/queries";
 import PostList from "../components/PostList";
-import corgi from "../assets/images/corgi.jpg";
-import lab from "../assets/images/lab.jpg";
-import rho from "../assets/images/rr-portrait.jpg";
-import dog from "../assets/images/dog-photo.jpg";
+
 // import authservice to checked for logged in user
 import Auth from "../utils/auth";
 // import neighbor list
